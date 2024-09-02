@@ -1,13 +1,4 @@
 # MDS615-Group-Project
-# Project Structure
-web-scaffold/
-├── index.html
-├── css/
-│   └── styles.css
-├── js/
-│   └── scripts.js
-└── README.md
-
 # Web Scaffold Project
 
 This project provides a basic scaffold for a web application. The scaffold includes a simple HTML structure, basic CSS for styling, and JavaScript for navigation. Students will enhance this scaffold by adding various features such as a calendar and a music player.
