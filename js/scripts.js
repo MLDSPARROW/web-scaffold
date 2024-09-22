@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
         homeSection.style.display = 'none';
         calendarSection.style.display = 'block';
         musicSection.style.display = 'none';
+        const calendarEl = document.getElementById('calendar-container');
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            editable: true,
             selectable: true,
             events: savedEvents,
             eventClick: function(info) {
@@ -58,4 +62,18 @@ document.addEventListener('DOMContentLoaded', function() {
         calendarSection.style.display = 'none';
         musicSection.style.display = 'block';
     });
+
+
+    function updateLocalStorage() {
+        savedEvents.length = 0; // Clear the array
+        calendar.getEvents().forEach(event => {
+            savedEvents.push({
+                title: event.title,
+                start: event.start,
+                end: event.end,
+                allDay: event.allDay
+            });
+        });
+        localStorage.setItem('events', JSON.stringify(savedEvents));
+    }
 });
