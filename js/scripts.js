@@ -15,7 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const savedEvents = JSON.parse(localStorage.getItem('events')) || [];
-    calendarLink.addEventListener('click', function() {
+    calendarLink.addEventListener('click', handleCalendarDisplay);
+    calendarLink.addEventListener('touchstart', handleCalendarDisplay);
+
+    
+    function handleCalendarDisplay(event){
         homeSection.style.display = 'none';
         calendarSection.style.display = 'block';
         musicSection.style.display = 'none';
@@ -55,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         calendar.render();
-    });
+    }
 
     musicLink.addEventListener('click', function() {
         homeSection.style.display = 'none';
