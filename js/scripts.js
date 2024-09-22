@@ -61,6 +61,51 @@ document.addEventListener('DOMContentLoaded', function() {
         homeSection.style.display = 'none';
         calendarSection.style.display = 'none';
         musicSection.style.display = 'block';
+
+        const audioPlayer = document.getElementById('audioPlayer');
+        const audioSource = document.getElementById('audioSource');
+        const fileInput = document.getElementById('fileInput');
+        const playButton = document.getElementById('playButton');
+        const pauseButton = document.getElementById('pauseButton');
+        const skipButton = document.getElementById('skipButton');
+        const volumeControl = document.getElementById('volumeControl');
+
+        let tracks = [];
+        let currentTrackIndex = 0;
+
+        fileInput.addEventListener('change', function() {
+            const files = Array.from(fileInput.files);
+            tracks = files.map(file => URL.createObjectURL(file));
+            currentTrackIndex = 0;
+            if (tracks.length > 0) {
+                loadTrack(currentTrackIndex);
+            }
+        });
+
+        function loadTrack(index) {
+            if (tracks.length > 0) {
+                audioSource.src = tracks[index];
+                audioPlayer.load();
+            }
+        }
+
+
+        playButton.addEventListener('click', function() {
+            audioPlayer.play();
+        });
+    
+        pauseButton.addEventListener('click', function() {
+            audioPlayer.pause();
+        });
+    
+        skipButton.addEventListener('click', function() {
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        });
+    
+        volumeControl.addEventListener('input', function() {
+            audioPlayer.volume = volumeControl.value;
+        });
     });
 
 
