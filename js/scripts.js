@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     calendarLink.addEventListener('click', handleCalendarDisplay);
     calendarLink.addEventListener('touchstart', handleCalendarDisplay);
 
-    
+
     function handleCalendarDisplay(event){
         homeSection.style.display = 'none';
         calendarSection.style.display = 'block';
@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
             editable: true,
             selectable: true,
             events: savedEvents,
+            selectLongPressDelay: 1,
             eventClick: function(info) {
                 const action = prompt('Enter "edit" to edit or "delete" to delete this event:');
                 if (action === 'edit') {
